@@ -4,7 +4,7 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 import java.math.BigDecimal;
 
-public class DefaultTax implements Calculator{
+public class DefaultTax implements TaxCalculator {
     @Override
     public Tax calculate(RequestItem item) {
             BigDecimal ratio = null;

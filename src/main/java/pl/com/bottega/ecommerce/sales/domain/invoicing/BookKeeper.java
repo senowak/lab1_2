@@ -13,13 +13,9 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
-import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
-
-    private final DefaultTax defaultTax = new DefaultTax();
-
-    public Invoice issuance(InvoiceRequest invoiceRequest, Calculator calculator) {
+    public Invoice issuance(InvoiceRequest invoiceRequest, TaxCalculator calculator) {
         Invoice invoice = new Invoice(Id.generate(), invoiceRequest.getClient());
 
         for (RequestItem item : invoiceRequest.getItems()) {
