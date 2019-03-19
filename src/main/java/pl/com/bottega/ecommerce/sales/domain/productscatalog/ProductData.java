@@ -12,10 +12,10 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.productscatalog;
 
-import java.util.Date;
-
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
+
+import java.util.Date;
 
 public class ProductData {
 
@@ -28,8 +28,8 @@ public class ProductData {
 
     private ProductType type;
 
-    @SuppressWarnings("unused")
-    private ProductData() {}
+    @SuppressWarnings("unused") private ProductData() {
+    }
 
     ProductData(Id productId, Money price, String name, ProductType type, Date snapshotDate) {
         this.productId = productId;
@@ -59,8 +59,7 @@ public class ProductData {
         return type;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + (name == null ? 0 : name.hashCode());
@@ -70,8 +69,7 @@ public class ProductData {
         return result;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
