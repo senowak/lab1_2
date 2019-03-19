@@ -35,4 +35,9 @@ public class Payment {
 
         return new Payment(id, clientData, amount.multiplyBy(-1));
     }
+    
+    static public Payment create (Id aggregateId, ClientData clientData, Money amount) {
+        return new Payment(aggregateId, clientData, amount); 
+    }
+    
 }
