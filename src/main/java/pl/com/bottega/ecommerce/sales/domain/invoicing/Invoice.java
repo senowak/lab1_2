@@ -47,6 +47,9 @@ public class Invoice {
         net = net.add(item.getNet());
         gros = gros.add(item.getGros());
     }
+    public static Invoice createInvoice(Id invoiceId, ClientData client){
+        return new Invoice(invoiceId, client);
+    }
 
     /**
      *
@@ -67,5 +70,6 @@ public class Invoice {
     public Money getGros() {
         return gros;
     }
+
 
 }
