@@ -13,4 +13,11 @@ public class MoneyTest {
         Money result = new Money(7.29,Currency.getInstance("USD"));
         Assert.assertEquals(result, money.add(adder));
     }
+
+    @Test void subtractMoneyTest(){
+        Money money = new Money(3.02, Currency.getInstance("USD"));
+        Money subtrahend = new Money(0.02, Currency.getInstance("USD"));
+        Money result = new Money(3.00, Currency.getInstance("USD"));
+        Assert.assertEquals(result, money.subtract(subtrahend));
+    }
 }
