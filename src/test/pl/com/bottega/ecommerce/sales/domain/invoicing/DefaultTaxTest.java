@@ -17,8 +17,10 @@ import sun.awt.ModalExclude;
 
 import java.util.Date;
 
+
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.is;
 
 
@@ -33,10 +35,20 @@ public class DefaultTaxTest {
     }
 
     @Test
-    public void testIfCaclulateWorksXD() {
+    public void testIfCaclulateWorks() {
         DefaultTax defaultTax = new DefaultTax();
         Tax tax = new Tax(new Money(2.99),"7% (F)");
         Assert.assertThat(tax.getAmount(),is(equalTo(defaultTax.calculate(item).getAmount())));
         Assert.assertThat(tax.getDescription(),is(equalTo(defaultTax.calculate(item).getDescription())));
     }
+
+    @Test
+    public void testIfCalculateDoesntWorkProperly() {
+        DefaultTax defaultTax = new DefaultTax();
+        Tax tax = new Tax(new Money(432.32),"5% (D)");
+        Assert.assertThat(tax.getAmount(),not(equalTo(defaultTax.calculate(item).getAmount())));
+        Assert.assertThat(tax.getDescription(),not(equalTo(defaultTax.calculate(item).getDescription())));
+    }
+
+
 }
