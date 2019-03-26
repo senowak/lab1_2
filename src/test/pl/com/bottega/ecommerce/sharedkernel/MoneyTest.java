@@ -1,9 +1,8 @@
-package pl.com.bottega.ecommerce.sales.domain.invoicing;
+package pl.com.bottega.ecommerce.sharedkernel;
 
 import org.junit.Assert;
 
 import org.junit.jupiter.api.Test;
-import pl.com.bottega.ecommerce.sharedkernel.Money;
 import java.util.Currency;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
