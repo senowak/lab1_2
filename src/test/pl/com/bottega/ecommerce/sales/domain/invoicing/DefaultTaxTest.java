@@ -36,4 +36,15 @@ public class DefaultTaxTest {
         Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
         Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
     }
+
+    @Test
+    public void checkFoodCalculate() {
+        productData = new ProductData(new Id("2"), new Money(new BigDecimal(100)), "ProductFoodForTest", ProductType.FOOD, new Date());
+        requestItem = new RequestItem(productData, 1, new Money(new BigDecimal(100)));
+
+        tax = new Tax(new Money(7), "7% (F)");
+        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
+        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+    }
+
 }
