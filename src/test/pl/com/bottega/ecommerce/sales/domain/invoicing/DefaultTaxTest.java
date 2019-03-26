@@ -49,4 +49,15 @@ public class DefaultTaxTest {
         Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
 
     }
+
+    @Test
+    public void checkStandardCalculate() {
+        productData = new ProductData(new Id("1"), new Money(new BigDecimal(10)), "StandardForTest", ProductType.STANDARD, new Date());
+        requestItem = new RequestItem(productData,1, new Money(new BigDecimal(10)));
+
+        tax = new Tax(new Money(2.3), "23%");
+        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
+        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+
+    }
 }
