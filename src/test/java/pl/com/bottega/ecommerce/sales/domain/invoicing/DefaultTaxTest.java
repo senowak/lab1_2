@@ -55,4 +55,16 @@ public class DefaultTaxTest {
 
     }
 
+    @Test public void calculateTaxForStandardProductTest() {
+
+        ProductData productData = new ProductData(productId, productPrice, productName, ProductType.STANDARD, productSnapshotDate);
+        RequestItem requestItem = new RequestItem(productData, quantity, productPrice);
+        DefaultTax defaultTax = new DefaultTax();
+
+        Tax tax = defaultTax.calculateTax(requestItem);
+
+        assertThat(tax.getAmount(), Is.is(new Money(new BigDecimal(2.3))));
+
+    }
+
 }
