@@ -43,4 +43,16 @@ public class DefaultTaxTest {
 
     }
 
+    @Test public void calculateTaxForDrugTest() {
+
+        ProductData productData = new ProductData(productId, productPrice, productName, ProductType.DRUG, productSnapshotDate);
+        RequestItem requestItem = new RequestItem(productData, quantity, productPrice);
+        DefaultTax defaultTax = new DefaultTax();
+
+        Tax tax = defaultTax.calculateTax(requestItem);
+
+        assertThat(tax.getAmount(), Is.is(new Money(new BigDecimal(0.5))));
+
+    }
+
 }
