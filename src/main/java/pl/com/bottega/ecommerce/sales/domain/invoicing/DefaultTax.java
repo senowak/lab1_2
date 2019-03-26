@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 public class DefaultTax implements TaxCalculation {
 
-    BigDecimal ratio;
-    String desc;
+    private BigDecimal ratio;
+    private String desc;
 
     public Tax calculate(RequestItem item, Money net) {
         switch (item.getProductData().getType()) {
