@@ -24,6 +24,19 @@ class MoneyTest {
     }
 
     @Test
-    void subtract() {
+    void subtractForTheSameCurrency() {
+        Money start = new Money(100.00, Money.DEFAULT_CURRENCY);
+        Money divider = new Money(50.50, Money.DEFAULT_CURRENCY);
+        Money result = new Money(49.50, Money.DEFAULT_CURRENCY);
+
+        assertEquals(result, start.subtract(divider));
+    }
+
+    @Test
+    void subtractForDifferentCurrency() {
+        Money start = new Money(100.00, Money.DEFAULT_CURRENCY);
+        Money divider = new Money(50.50, "PLN");
+
+        assertThrows(IllegalArgumentException.class, () -> start.subtract(divider));
     }
 }
