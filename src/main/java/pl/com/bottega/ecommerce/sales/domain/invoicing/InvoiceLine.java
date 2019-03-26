@@ -18,6 +18,8 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
+import java.util.Objects;
+
 public class InvoiceLine {
 
     private ProductData product;
@@ -57,5 +59,24 @@ public class InvoiceLine {
 
     public Tax getTax() {
         return tax;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof InvoiceLine))
+            return false;
+        InvoiceLine that = (InvoiceLine) o;
+        return getQuantity() == that.getQuantity()
+               && getProduct().equals(that.getProduct())
+               && getNet().equals(that.getNet())
+               && getGros().equals(that.getGros())
+               && getTax().equals(that.getTax());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getProduct(), getQuantity(), getNet(), getGros(), getTax());
     }
 }

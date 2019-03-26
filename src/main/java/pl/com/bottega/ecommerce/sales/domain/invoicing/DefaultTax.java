@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 
 public class DefaultTax implements TaxCalculator {
 
-    @Override public Tax calculate(RequestItem item) {
+    @Override
+    public Tax calculate(RequestItem item) {
         BigDecimal ratio = null;
         String desc = null;
 
