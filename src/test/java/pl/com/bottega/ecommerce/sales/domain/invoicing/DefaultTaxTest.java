@@ -21,8 +21,10 @@ public class DefaultTaxTest {
     private ProductData productData;
 
     private final String DRUG_DESCRIPTION = "5% (D)";
+    private final String FOOD_DESCRIPTION = "7% (F)";
 
     private final BigDecimal VALUE_OF_DRUG = BigDecimal.valueOf(0.05);
+    private final BigDecimal VALUE_OF_FOOD = BigDecimal.valueOf(0.07);
 
     @Before public void init() {
         defaultTax = new DefaultTax();
@@ -37,4 +39,15 @@ public class DefaultTaxTest {
         Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
         Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
     }
+
+    @Test public void checkFoodTest() {
+        productData = new ProductData(new Id("1"), new Money(1), "prod1", ProductType.FOOD, new Date());
+        requestItem = new RequestItem(productData, 1, new Money(1));
+
+        Tax tax = new Tax(requestItem.getTotalCost().multiplyBy(VALUE_OF_FOOD), FOOD_DESCRIPTION);
+
+        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
+        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+    }
+
 }
