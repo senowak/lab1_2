@@ -16,5 +16,4 @@ public enum ProductType {
     DRUG,
     FOOD,
     STANDARD
-
 }
