@@ -1,6 +1,7 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import org.hamcrest.core.Is;
+import org.junit.Before;
 import org.junit.Test;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
@@ -14,26 +15,31 @@ import static org.junit.Assert.*;
 
 public class DefaultTaxTest {
 
+    private Id productId;
+    private Money productPrice;
+    private String productName;
+    private Date productSnapshotDate;
+    private int quantity;
+
+    @Before public void initialize() {
+        productId = new Id("1");
+        BigDecimal denomination;
+        denomination = new BigDecimal("10");
+        productPrice = new Money(denomination);
+        productName = "testProduct";
+        productSnapshotDate = new Date(2013, 02, 01);
+        quantity = 1;
+    }
+
     @Test public void calculateTaxForFoodTest() {
 
-        Id productId = new Id("1");
-        BigDecimal denomination = new BigDecimal("3.5");
-        Money productPrice = new Money(denomination);
-        String productName = "chocolate";
-        ProductType produktType = ProductType.FOOD;
-        Date produktSnapshotDate = new Date(2013, 02, 01);
-
-        ProductData productData = new ProductData(productId, productPrice, productName, produktType, produktSnapshotDate);
-
-        int quantity = 1;
+        ProductData productData = new ProductData(productId, productPrice, productName, ProductType.FOOD, productSnapshotDate);
         RequestItem requestItem = new RequestItem(productData, quantity, productPrice);
-
         DefaultTax defaultTax = new DefaultTax();
 
         Tax tax = defaultTax.calculateTax(requestItem);
-        Money expectedResult = new Money(new BigDecimal(0.24));
 
-        assertThat(tax.getAmount(), Is.is(expectedResult));
+        assertThat(tax.getAmount(), Is.is(new Money(new BigDecimal(0.7))));
 
     }
 
