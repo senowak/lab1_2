@@ -5,6 +5,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,9 @@ import sun.awt.ModalExclude;
 import java.util.Date;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+
 
 public class DefaultTaxTest {
 
@@ -29,7 +33,10 @@ public class DefaultTaxTest {
     }
 
     @Test
-    public void calculate() {
-        
+    public void testIfCaclulateWorksXD() {
+        DefaultTax defaultTax = new DefaultTax();
+        Tax tax = new Tax(new Money(2.99),"7% (F)");
+        Assert.assertThat(tax.getAmount(),is(equalTo(defaultTax.calculate(item).getAmount())));
+        Assert.assertThat(tax.getDescription(),is(equalTo(defaultTax.calculate(item).getDescription())));
     }
 }

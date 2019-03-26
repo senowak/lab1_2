@@ -34,4 +34,11 @@ public class Tax {
         return description;
     }
 
+    @Override
+    public String toString() {
+        return "Tax{" +
+                "amount=" + amount +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
