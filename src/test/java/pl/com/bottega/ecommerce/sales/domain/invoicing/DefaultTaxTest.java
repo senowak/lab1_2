@@ -32,4 +32,13 @@ public class DefaultTaxTest {
         Tax expected = new Tax(testValueMultipliedByRightRatio, "");
         assertEquals(expected.getAmount(), defaultTax.calculate(requestItem, testValue).getAmount());
     }
+
+    @Test public void searchingIfStandardIsGettingRightRatio() {
+        ProductData productData = new ProductData(new Id("0"), testValue, "Testowy", ProductType.STANDARD,
+                new Date(System.currentTimeMillis()));
+        RequestItem requestItem = new RequestItem(productData, 1, testValue);
+        Money testValueMultipliedByRightRatio = new Money(2.3);
+        Tax expected = new Tax(testValueMultipliedByRightRatio, "");
+        assertEquals(expected.getAmount(), defaultTax.calculate(requestItem, testValue).getAmount());
+    }
 }
