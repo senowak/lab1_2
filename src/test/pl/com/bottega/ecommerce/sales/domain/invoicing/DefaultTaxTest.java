@@ -13,7 +13,6 @@ import java.util.Date;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
 
 public class DefaultTaxTest {
 
@@ -43,6 +42,17 @@ public class DefaultTaxTest {
         requestItem = new RequestItem(productData, 1, new Money(new BigDecimal(100)));
 
         tax = new Tax(new Money(7), "7% (F)");
+        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
+        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+    }
+
+    @Test
+    public void checkStandardCalculate() {
+        productData = new ProductData(new Id("3"), new Money(new BigDecimal(100)), "ProductStandardForTest", ProductType.STANDARD,
+                new Date());
+        requestItem = new RequestItem(productData, 1, new Money(new BigDecimal(100)));
+
+        tax = new Tax(new Money(23), "23%");
         Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
         Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
     }
