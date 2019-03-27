@@ -48,6 +48,9 @@ public class Invoice {
         gros = gros.add(item.getGros());
     }
 
+    public static Invoice createObject(Id invoiceId, ClientData client) {
+        return new Invoice(invoiceId, client);
+    }
     /**
      *
      * @return immutable projection
