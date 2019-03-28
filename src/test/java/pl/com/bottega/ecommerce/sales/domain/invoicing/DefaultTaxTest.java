@@ -40,8 +40,7 @@ public class DefaultTaxTest {
 
         Tax tax = new Tax(requestItem.getTotalCost().multiplyBy(VALUE_OF_DRUG), DRUG_DESCRIPTION);
 
-        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
-        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+        Assert.assertThat(tax, is(equalTo(defaultTax.calculate(requestItem))));
     }
 
     @Test
@@ -51,8 +50,7 @@ public class DefaultTaxTest {
 
         Tax tax = new Tax(requestItem.getTotalCost().multiplyBy(VALUE_OF_FOOD), FOOD_DESCRIPTION);
 
-        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
-        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+        Assert.assertThat(tax, is(equalTo(defaultTax.calculate(requestItem))));
     }
 
     @Test
@@ -62,8 +60,7 @@ public class DefaultTaxTest {
 
         Tax tax = new Tax(requestItem.getTotalCost().multiplyBy(VALUE_OF_STANDARD), STANDARD_DESCRIPTION);
 
-        Assert.assertThat(tax.getAmount(), is(equalTo(defaultTax.calculate(requestItem).getAmount())));
-        Assert.assertThat(tax.getDescription(), is(equalTo(defaultTax.calculate(requestItem).getDescription())));
+        Assert.assertThat(tax, is(equalTo(defaultTax.calculate(requestItem))));
     }
 
 }
