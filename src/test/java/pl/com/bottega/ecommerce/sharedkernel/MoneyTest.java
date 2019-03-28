@@ -35,4 +35,15 @@ public class MoneyTest {
         moneyEUR.add(moneyUSD);
     }
 
+    @Test
+    public void subtractTest() {
+        Assert.assertThat(moneyEUR.subtract(moneyEUR1), is(equalTo(new Money(MONEY_EUR_VALUE - MONEY_EUR1_VALUE))));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void subtractFailureTest() {
+        moneyEUR.subtract(moneyUSD);
+    }
+
+
 }
