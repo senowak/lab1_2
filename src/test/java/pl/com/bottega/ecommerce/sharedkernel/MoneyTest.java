@@ -45,5 +45,8 @@ public class MoneyTest {
         moneyEUR.subtract(moneyUSD);
     }
 
-
+    @Test
+    public void multiplyByTest() {
+        Assert.assertThat(moneyEUR.multiplyBy(MONEY_EUR1_VALUE), is(equalTo(new Money(MONEY_EUR_VALUE * MONEY_EUR1_VALUE))));
+    }
 }
