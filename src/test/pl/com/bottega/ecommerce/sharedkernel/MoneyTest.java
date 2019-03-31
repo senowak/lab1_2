@@ -29,6 +29,16 @@ public class MoneyTest {
         Assert.assertThat(dollarMoney.add(dollarMoney),is(equalTo(new Money(2 * 3.87,"USD"))));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testIfCurrenciesMatchForSubtraction(){
+        plnMoney.add(dollarMoney);
+    }
+
+    @Test
+    public void testCorrectSubtraction(){
+        Assert.assertThat(plnMoney.subtract(plnMoney),is(equalTo(new Money(0,"PLN"))));
+    }
+
 
 
 
