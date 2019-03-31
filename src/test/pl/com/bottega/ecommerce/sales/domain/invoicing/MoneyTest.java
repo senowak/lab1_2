@@ -27,4 +27,9 @@ public class MoneyTest {
     public void add() {
         Assert.assertThat(moneyEUR.add(moneyEUR1), is(equalTo(new Money(MONEY_EUR_VALUE + MONEY_EUR1_VALUE))));
     }
+
+    @Test
+    public void subtract() {
+        Assert.assertThat(moneyEUR.subtract(moneyEUR1), is(equalTo(new Money(MONEY_EUR_VALUE - MONEY_EUR1_VALUE))));
+    }
 }
