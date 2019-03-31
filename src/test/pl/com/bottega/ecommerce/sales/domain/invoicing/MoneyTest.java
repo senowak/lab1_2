@@ -37,4 +37,14 @@ public class MoneyTest {
     public void multiplyBy() {
         Assert.assertThat(moneyEUR.multiplyBy(MONEY_EUR1_VALUE), is(equalTo(new Money(MONEY_EUR_VALUE * MONEY_EUR1_VALUE))));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addFail() {
+        moneyEUR.add(moneyUSD);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void subtractFail() {
+        moneyEUR.subtract(moneyUSD);
+    }
 }
