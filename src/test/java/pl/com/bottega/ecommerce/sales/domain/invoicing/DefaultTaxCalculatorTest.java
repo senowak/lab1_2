@@ -32,3 +32,13 @@ public class DefaultTaxCalculatorTest {
         Assert.assertThat(taxCalculator.compute(drugItem, money).getAmount(), is(tax.getAmount()));
 		Assert.assertThat(taxCalculator.compute(drugItem, money).getDescription(), is(tax.getDescription()));
 	}
+
+	@Test
+	public void computeTaxForFood() {
+		RequestItem foodItem = new RequestItem(new ProductData(Id.generate(), money, "DRUGS", ProductType.FOOD, new Date()), 1,
+				money);
+
+		Tax tax = new Tax(new Money(0.7, "EUR"),"7% (F)");
+		Assert.assertThat(taxCalculator.compute(foodItem, money).getAmount(), is(tax.getAmount()));
+		Assert.assertThat(taxCalculator.compute(foodItem, money).getDescription(), is(tax.getDescription()));
+	}
