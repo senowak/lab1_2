@@ -49,3 +49,11 @@ public class MoneyTest {
         Money m2 = new Money(10, currencyUSD);
         m1.subtract(m2);
     }
+
+    @Test
+    public void checkMoneyCurrency() {
+        Money m1 = new Money(10, currencyEUR);
+        Assert.assertThat(m1.getCurrency(), is(currencyEUR));
+        Assert.assertThat(m1.getCurrencyCode(), is("EUR"));
+    }
+}
