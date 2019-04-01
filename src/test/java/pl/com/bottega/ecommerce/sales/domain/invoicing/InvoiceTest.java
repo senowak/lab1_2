@@ -48,4 +48,12 @@ public class InvoiceTest {
         invoice.addItem(null);
         Assert.assertThat(invoice.getItems().size(), is(0));
     }
+
+    @Test
+    public void InvoiceOnlyOneItemAdd() {
+        invoice.addItem(item);
+        Assert.assertThat(invoice.getItems().size(), is(1));
+        Assert.assertThat(invoice.getGros(), is(item.getGros()));
+        Assert.assertThat(invoice.getNet(), is(item.getNet()));
+    }
 }
