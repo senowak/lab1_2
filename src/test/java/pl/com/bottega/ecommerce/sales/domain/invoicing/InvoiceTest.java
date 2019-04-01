@@ -42,4 +42,10 @@ public class InvoiceTest {
         Assert.assertThat(invoice.getNet(), is(item.getNet().multiplyBy(itemsAdd)));
 
     }
+
+    @Test
+    public void NullItemAdd() {
+        invoice.addItem(null);
+        Assert.assertThat(invoice.getItems().size(), is(0));
+    }
 }
