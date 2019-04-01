@@ -28,4 +28,18 @@ public class InvoiceTest {
 
         item = new InvoiceLine(product, 1, new Money(ITEM_BRUT), new Tax(new Money(ITEM_NET), "fee"));
     }
+
+    @Test
+    public void ItemsAdd() {
+        int itemsAdd = 45;
+        for (int i = 0; i < itemsAdd; i++) {
+            invoice.addItem(item);
+        }
+        Assert.assertThat(invoice.getItems().size(), is(itemsAdd));
+
+        Assert.assertThat(invoice.getGros(), is(item.getGros().multiplyBy(itemsAdd)));
+
+        Assert.assertThat(invoice.getNet(), is(item.getNet().multiplyBy(itemsAdd)));
+
+    }
 }
