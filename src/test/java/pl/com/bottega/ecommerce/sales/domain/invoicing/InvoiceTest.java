@@ -38,3 +38,11 @@ public class InvoiceTest {
         Assert.assertThat(invoice.getGros(), is(item.getGros()));
         Assert.assertThat(invoice.getNet(), is(item.getNet()));
     }
+
+    @Test
+    public void NullItemAdded() {
+        invoice.addItem(null);
+        Assert.assertThat(invoice.getItems()
+                                 .size(),
+                is(0));
+    }
