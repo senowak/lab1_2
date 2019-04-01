@@ -26,5 +26,11 @@ public class MoneyTest {
         m1.add(m2);
     }
 
-
+    @Test
+    public void SubtractSameCurrency() {
+        Money m1 = new Money(555.25, Currency.getInstance("PLN"));
+        Money m2 = new Money(555.25, Currency.getInstance("PLN"));
+        Money result = m1.subtract(m2);
+        Assert.assertThat(result.equals(new Money(0, Currency.getInstance("PLN"))), is(true));
+    }
 }
