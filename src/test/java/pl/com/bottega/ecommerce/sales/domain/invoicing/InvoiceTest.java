@@ -46,3 +46,20 @@ public class InvoiceTest {
                                  .size(),
                 is(0));
     }
+
+    @Test
+    public void SeveralItemsAdded() {
+        int itemsToAdd = 10;
+        for (int i = 0; i < itemsToAdd; i++) {
+            invoice.addItem(item);
+        }
+        Assert.assertThat(invoice.getItems()
+                                 .size(),
+                is(itemsToAdd));
+        Assert.assertThat(invoice.getGros(), is(item.getGros()
+                                                    .multiplyBy(itemsToAdd)));
+        Assert.assertThat(invoice.getNet(), is(item.getNet()
+                                                   .multiplyBy(itemsToAdd)));
+    }
+
+}
