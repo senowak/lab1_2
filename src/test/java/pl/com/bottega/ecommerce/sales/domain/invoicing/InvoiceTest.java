@@ -16,30 +16,16 @@ import static org.junit.Assert.*;
 
 public class InvoiceTest {
     Invoice invoice;
-    final int PRICE_ITEM = 1;
-    final int PRICE_NET = 20;
-    final int PRICE_GROS = 40;
+    InvoiceLine item;
+    final int PRODUCT_PRICE = 455;
+    final int ITEM_BRUT = 455;
+    final int ITEM_NET = 366;
 
     @Before
-    public void setUp() {
-        Id invoiceId = Id.generate();
-        Id clientId = Id.generate();
-        Id productId = Id.generate();
-        Money price = Money.ZERO;
-        ProductType type = ProductType.FOOD;
-        Date snapshotDate = new Date();
-        ClientData client = new ClientData(clientId, "dssdf");
-        invoice = Invoice.create(invoiceId, client);
-        ProductData product = new ProductData(productId, price, "sewrefw", type, snapshotDate);
-    }
+    public void invoiceData() {
+        invoice = Invoice.create(Id.generate(), new ClientData(Id.generate(), "user0"));
+        ProductData product = new ProductData(Id.generate(), new Money(PRODUCT_PRICE), "cheese", ProductType.FOOD, new Date());
 
-    @Test
-    public void addItem() {
-
-//        Assert.assertThat(,is(true));
-    }
-
-    @Test
-    public void create() {
+        item = new InvoiceLine(product, 1, new Money(ITEM_BRUT), new Tax(new Money(ITEM_NET), "fee"));
     }
 }
