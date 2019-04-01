@@ -16,6 +16,14 @@ public class MoneyTest {
         Money m2 = new Money(5, Currency.getInstance("PLN"));
         Money result = m1.add(m2);
         Assert.assertThat(result.equals(new Money(10, Currency.getInstance("PLN"))), is(true));
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void AddDifferentCurrency() {
+        Money m1 = new Money(40.2, Currency.getInstance("USD"));
+        Money m2 = new Money(15.1, Currency.getInstance("PLN"));
+        m1.add(m2);
     }
 
 
