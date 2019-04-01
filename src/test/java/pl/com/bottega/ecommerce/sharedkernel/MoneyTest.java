@@ -27,3 +27,10 @@ public class MoneyTest {
         Money result = m1.add(m2);
         Assert.assertThat(result.equals(new Money(20, currencyEUR)), is(true));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void AddMoneyWithDifferentCurrency() {
+        Money m1 = new Money(10, currencyEUR);
+        Money m2 = new Money(10, currencyUSD);
+        m1.add(m2);
+    }
