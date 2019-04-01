@@ -34,3 +34,11 @@ public class MoneyTest {
         Money m2 = new Money(10, currencyUSD);
         m1.add(m2);
     }
+
+    @Test
+    public void SubtractMoneyWithSameCurrency() {
+        Money m1 = new Money(10, currencyEUR);
+        Money m2 = new Money(10, currencyEUR);
+        Money result = m1.subtract(m2);
+        Assert.assertThat(result.equals(new Money(0, currencyEUR)), is(true));
+    }
