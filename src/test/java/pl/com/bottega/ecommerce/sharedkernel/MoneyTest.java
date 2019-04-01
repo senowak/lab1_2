@@ -40,4 +40,10 @@ public class MoneyTest {
         Money m2 = new Money(956.01,Currency.getInstance("USD") );
         m1.subtract(m2);
     }
+    @Test
+    public void checkCurrency() {
+        Money m1 = new Money(456.36,  Currency.getInstance("PLN"));
+        Assert.assertThat(m1.getCurrency(), is( Currency.getInstance("PLN")));
+        Assert.assertThat(m1.getCurrencyCode(), is("PLN"));
+    }
 }
