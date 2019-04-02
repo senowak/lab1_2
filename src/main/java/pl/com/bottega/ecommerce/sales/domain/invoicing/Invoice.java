@@ -36,7 +36,6 @@ public class Invoice {
         this.id = invoiceId;
         this.client = client;
         this.items = new ArrayList<>();
-
         this.net = Money.ZERO;
         this.gros = Money.ZERO;
     }
