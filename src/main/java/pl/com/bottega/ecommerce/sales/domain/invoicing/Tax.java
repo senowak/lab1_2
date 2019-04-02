@@ -14,6 +14,8 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
+import java.util.Objects;
+
 public class Tax {
 
     private Money amount;
@@ -34,4 +36,18 @@ public class Tax {
         return description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Tax))
+            return false;
+        Tax tax = (Tax) o;
+        return Objects.equals(getAmount(), tax.getAmount()) && Objects.equals(getDescription(), tax.getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getAmount(), getDescription());
+    }
 }
